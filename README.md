@@ -1,39 +1,46 @@
-# PES - Maven
+# Branch de avaliação `fc62382`
 
-Antes de começares, certifica-te de que:
+Este branch é só teu. Contém um pequeno projeto Java 17 / Maven (`ferramenta-896`).
 
-1. Tens sessão iniciada no GitHub,
-2. Tens um Personal Access Token,
-3. Configuraste o teu utilizador e email neste computador (podes usar o script `setup.sh`;
-   corre-o sem argumentos para ver como se usa).
+## O que tens de fazer
 
-Neste repositório existe um branch com o teu número de estudante. Nele vais encontrar
-um pequeno projeto Maven com duas dependências desatualizadas. Ao fazeres fork, não te
-esqueças de fazer fork de **todos** os branches e não apenas do `main`. Caso te esqueças
-de fazer fork do teu branch, podes ir buscá-lo fazendo o seguinte:
+O `pom.xml` declara 5 dependências. **Pelo menos duas delas estão desatualizadas.**
 
-1. Ir ao teu fork.
-2. No selector de branches, escreves o teu número de aluno.
-3. O GitHub vai-te perguntar se queres criar um branch com esse nome. Aceita.
-4. No novo branch, vai haver um botão a perguntar se queres sincronizar ("Sync") o teu branch
-   com o original. Isso vai trazer o branch para o teu fork.
+1. **Descobre quais** usando o maven.
+2. **Atualiza à mão** a versão de pelo menos duas dependências no `pom.xml`
+   (para a versão mais recente indicada). Não alteres as outras dependências.
+3. **Gera o jar**. O ficheiro fica em **`target/ferramenta-896-1.0.jar`**.
+   Confirma que funciona: `java -jar target/ferramenta-896-1.0.jar`
+4. **Faz commit** do `pom.xml` e do jar.
+5. **Faz push** do teu branch: `git push origin fc62382`
+6. **Abre um PR** para o repositório original, com base no branch `fc62382`.
 
-O teu trabalho é:
+Não alteres nada dentro de `src/`.
 
-1. descobrir quais são as dependências desatualizadas,
-2. atualizar a versão dessas duas dependências no `pom.xml`,
-3. gerar o jar com maven, fazer commit dele e fazer push do teu branch,
-4. abrir um PR para o repositório original, com base no teu branch.
+## Comandos do guião
 
-Requisitos: JDK 17+, Maven 3.8+, git. Não faças push para o `main` nem para outros branches.
+Referência rápida dos comandos Maven vistos no Guião 6.
 
-Lê com atenção o README do teu branch: tem uma lista de comandos úteis.
+| Comando |
+|---|
+| `mvn archetype:generate -DgroupId=pt.ul.fc -DartifactId=guiao6 -Dversion=1.0 -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.5 -DinteractiveMode=false` |
+| `mvn clean` |
+| `mvn compile` |
+| `mvn test` |
+| `mvn package` |
+| `mvn install` |
+| `mvn deploy` |
+| `mvn dependency:tree` |
+| `mvn versions:display-dependency-updates` |
 
-Para mudares para o teu branch:
+Comandos de Git para a entrega:
 
-```
-git fetch origin
-git checkout <o-teu-numero-de-estudante>
-```
-
-Boa sorte!
+| Comando |
+|---|
+| `git fetch origin` |
+| `git checkout fc62382` |
+| `git status` |
+| `git add -A` |
+| `git commit -m "mensagem"` |
+| `git push origin fc62382` |
+| `git reset --soft HEAD~1` |
